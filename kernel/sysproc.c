@@ -110,3 +110,24 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+static char *valid_user = "root";
+static char *valid_pass = "paranoid";
+
+uint64
+sys_login(void)
+{
+  char username[32];
+  char password[32];
+
+  if(argstr(0, username, sizeof(username)) < 0)
+    return -1;
+  if(argstr(1, password, sizeof(password)) < 0)
+    return -1;
+
+  if(strncmp(username, valid_user, sizeof(username)) == 0 &&
+     strncmp(password, valid_pass, sizeof(password)) == 0) {
+    return 0;
+  }
+  return -1;
+}

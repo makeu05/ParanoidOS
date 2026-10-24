@@ -1,12 +1,8 @@
-*~
-_*
 *.o
 *.d
 *.asm
 *.sym
-*.img
-/mkfs/mkfs
-/kernel/kernel
-/user/usys.S
+kernel/kernel
+fs.img
+mkfs/mkfs
 .gdbinit
-TAGS
